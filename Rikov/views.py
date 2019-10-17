@@ -2,13 +2,8 @@ from django.shortcuts import render
 from django.views.generic.edit import FormView
 from .forms import FileFieldForm, UploadFileForm
 from .models import preview
-
 from django.http import HttpResponseRedirect,HttpResponse
 from django.views.generic import View
-
-
-def index(request):
-    return render(request, 'index.html')
 
 
 def upload_file(request):
@@ -21,3 +16,8 @@ def upload_file(request):
     else:
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})
+
+
+def index(request):
+    pre = preview.objects.all()
+    return render(request, 'index.html', {'pre': pre})

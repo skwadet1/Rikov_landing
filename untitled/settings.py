@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REPOSITORY_ROOT = os.path.dirname(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'untitled.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rikov',
+        'NAME': 'rikovapp',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
@@ -130,3 +131,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     "D:/Interes/untitled/static"
 ]
+MEDIA_URL = '/previews/'
+MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, "untitled/media")
+
+
