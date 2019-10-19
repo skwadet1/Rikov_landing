@@ -19,10 +19,11 @@ from Rikov import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', views.index),
+    path('index/', views.index, name='pages_url'),
     path('create/', views.create_page),
+    path('<str:slug>/', views.DetailView.as_view(), name='pages_url'),
+    path('tags/', views.DetailTag.as_view(), name='CreateNewPageTag')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

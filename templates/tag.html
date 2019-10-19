@@ -55,6 +55,10 @@
             background-color: white;
         }
 
+        a:active {
+            color: red
+        }
+
         @-webkit-keyframes fade-in {
             0% {
                 opacity: 0.1;
@@ -91,6 +95,10 @@
             }
         }
 
+        a.custom-card,
+        a.custom-card:hover {
+            color: inherit;
+        }
 
         body {
             -webkit-animation: fade-in 1s linear;
@@ -98,20 +106,11 @@
             -o-animation: fade-in 1s linear;
             animation: fade-in 1s linear;
         }
-
-        #two.stretched-link {
-            color: lightgray;
-        }
-
-        #two.stretched-link:hover {
-            color: gray;
-            transition: 0.5s;
-        }
     </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid"><a class="navbar-brand" href="#">Rikov</a>
+    <div class="container-fluid"><a class="navbar-brand" href="">Rikov</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-4"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse"
@@ -124,59 +123,12 @@
         </div>
     </div>
 </nav>
-<div class="container">
-    <div class="row">
-        {% for i in pre reversed %}
-            <div class="col-md-4">
-                <a href="{{ i.url }}" class="custom-card">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top"
-                             data-src="holder.js/105px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                             alt="Thumbnail [105%x225]" style="height: 225px; width: 105%; display: block;"
-                             src="{{ i.preview_image.url }}"
-                             data-holder-rendered="true">
-                        <div class="card-img-overlay d-flex">
-                            <div class="my-auto mx-auto text-center">
-                                <p class="card-title">
-                                    <a id="one" href="{{ i.get_absolute_url }}" class="stretched-link"
-                                       style="color:white; font-size:200%; text-decoration: none ">{{ i.title }}</a>
-                                </p>
-                                <p class="card-text">
-                                    <a id="two" href="{{ i.tag }}" class="stretched-link"
-                                       style="position: relative; font-size:115%; text-decoration: none;"> {{ i.tag }}</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        {% endfor %}
-    </div>
-</div>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="embed-responsive embed-responsive-21by9">
-                <iframe src="https://player.vimeo.com/video/273537505?title=0&byline=0&portrait=0" width="1920"
+                <iframe src="{{ pg.tag }}" width="1920"
                         height="600" frameborder="0" allow="autoplay"></iframe>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="embed-responsive embed-responsive-21by9">
-                <iframe src="https://player.vimeo.com/video/269367423?title=0&byline=0&portrait=0" width="1920"
-                        height="600" frameborder="0" allow="autoplay"></iframe>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="embed-responsive embed-responsive-21by9">
-                <iframe src="https://player.vimeo.com/video/280519624?title=0&byline=0&portrait=0" width="1920"
-                        height="600" frameborder="0" allow="autoplay"></iframe>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="embed-responsive embed-responsive-21by9">
-                <iframe src="https://player.vimeo.com/video/362539667?title=0&byline=0&portrait=0" width="1920"
-                        height="1080" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -190,5 +142,4 @@
     </a>
 </div>
 </body>
-
 </html>
