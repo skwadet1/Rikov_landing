@@ -41,15 +41,18 @@
             margin-right: 650px;
         }
 
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(0%);
+        }
 
         .navbar li {
             margin-left: 1em;
             margin-right: 1em;
         }
 
-
-        a:active {
-            color: red
+        .carousel {
+            background-color: white;
         }
 
         @-webkit-keyframes fade-in {
@@ -88,10 +91,6 @@
             }
         }
 
-        a.custom-card,
-        a.custom-card:hover {
-            color: inherit;
-        }
 
         body {
             -webkit-animation: fade-in 1s linear;
@@ -112,7 +111,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid"><a class="navbar-brand" href="">Rikov</a>
+    <div class="container-fluid"><a class="navbar-brand" href="#">Rikov</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-4"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse"
@@ -127,32 +126,72 @@
 </nav>
 <div class="container">
     <div class="row">
-        {% for i in tag.pages.all reversed %}
-            <a href="{{ i.url }}" class="custom-card">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top"
-                         data-src="holder.js/105px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                         alt="Thumbnail [105%x225]" style="height: 225px; width: 105%; display: block;"
-                         src="{{ i.preview_image.url }}"
-                         data-holder-rendered="true">
-                    <div class="card-img-overlay d-flex">
-                        <div class="my-auto mx-auto text-center">
-                            <p class="card-title">
-                                <a id="one" href="{{ i.get_absolute_url }}" class="stretched-link"
-                                   style="color:white; font-size:200%; text-decoration: none ">{{ i.title }}</a>
-                            </p>
-                            {% for tag in i.tag.all %}
-                                <p class="card-text">
-                                    <a id="two" href="{{ tag.get_absolute_url }}" class="stretched-link"
-                                       style="position: relative; font-size:115%; text-decoration: none;"> {{ tag.title }}</a>
+        {% for i in pre reversed %}
+            <div class="col-md-4">
+                <a href="{{ i.url }}" class="custom-card">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top"
+                             data-src="holder.js/105px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                             alt="Thumbnail [105%x225]" style="height: 225px; width: 105%; display: block;"
+                             src="{{ i.preview_image.url }}"
+                             data-holder-rendered="true">
+                        <div class="card-img-overlay d-flex">
+                            <div class="my-auto mx-auto text-center">
+                                <p class="card-title">
+                                    <a id="one" href="{{ i.get_absolute_url }}" class="stretched-link"
+                                       style="color:white; font-size:200%; text-decoration: none ">{{ i.title }}</a>
                                 </p>
-                            {% endfor %}
+                                <p class="card-text">
+                                    {% for tag in pre.tag.all %}
+                                        <a id="two" href="{{ tag.get_absolute_url }}" class="stretched-link"
+                                           style="position: relative; font-size:115%; text-decoration: none;"> {{ tag.title }}</a>
+                                    {% endfor %}
+
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         {% endfor %}
     </div>
 </div>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="embed-responsive embed-responsive-21by9">
+                <iframe src="https://player.vimeo.com/video/273537505?title=0&byline=0&portrait=0" width="1920"
+                        height="600" frameborder="0" allow="autoplay"></iframe>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="embed-responsive embed-responsive-21by9">
+                <iframe src="https://player.vimeo.com/video/269367423?title=0&byline=0&portrait=0" width="1920"
+                        height="600" frameborder="0" allow="autoplay"></iframe>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="embed-responsive embed-responsive-21by9">
+                <iframe src="https://player.vimeo.com/video/280519624?title=0&byline=0&portrait=0" width="1920"
+                        height="600" frameborder="0" allow="autoplay"></iframe>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="embed-responsive embed-responsive-21by9">
+                <iframe src="https://player.vimeo.com/video/362539667?title=0&byline=0&portrait=0" width="1920"
+                        height="1080" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 </body>
+
 </html>

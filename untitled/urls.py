@@ -20,10 +20,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('index/', views.index, name='pages_url'),
-    path('create/', views.create_page),
-    path('<str:slug>/', views.DetailView.as_view(), name='pages_url'),
-    path('tags/', views.DetailTag.as_view(), name='CreateNewPageTag')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+                  path('admin/', admin.site.urls),
+                  path('', views.index, name='pages_url'),
+                  path('upload_video/', views.PageCreate.as_view(), name='create_url'),
+                  path('upload_photo/', views.PhotoCreate.as_view(), name='create_url'),
+                  path('video/<str:slug>/', views.DetailView.as_view(), name='pages_url'),
+                  path('tag/<str:slug>/', views.DetailTag.as_view(), name='tag_url'),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
