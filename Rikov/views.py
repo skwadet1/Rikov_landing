@@ -38,10 +38,11 @@ class PageCreate(LoginRequiredMixin, CreateMixin, View):
     raise_exception = True
 
 
-# class PhotoCreate(CreateMixin, View):
-#     model_form = FormPhoto
-#     template = "upload_test.html"
-#     raise_exception = True
+class PhotoCreate(LoginRequiredMixin, CreateMixin, View):
+    model_form = FormPhoto
+    template = "upload_test.html"
+    raise_exception = True
+
 
 @login_required(login_url='photos')
 def create_page(request):

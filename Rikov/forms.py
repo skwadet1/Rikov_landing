@@ -22,12 +22,12 @@ class FormVideo(forms.ModelForm):
         }
 
 
-# class FormPhoto(forms.ModelForm):
-#     class Meta:
-#         model = Photo
-#         fields = ['title', 'image']
-#         widgets = {
-#             'title': forms.TextInput(attrs={'class': 'form-control'}),
-#             'image': forms.FileInput(attrs={'class': 'form-control'}),
-#         }
+class FormPhoto(forms.ModelForm):
+    class Meta:
+        model = Photo
+        fields = ['title', 'image']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'image': forms.FileInput(attrs={'class': 'form-control'}),
+        }
 
