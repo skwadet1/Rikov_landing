@@ -25,12 +25,21 @@
 
 <body>
 <div class="container mt-3">
-    <h2>Выберите файл превью</h2>
-    <form action="" method="post" enctype="multipart/form-data">
+    <a href="{% url 'control' %}">< Обратно</a>
+    <form action="{% url 'upload_photo' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {% load crispy_forms_tags %}
-        {{ form|crispy }}
-        <input type="submit" class="btn btn-primary mb-2" value="Submit"/>
+        {% for fields in form %}
+            <div class="form-group">
+                {% if fields.errors %}
+                    <div class="alert alert-danger">
+                        {{ fields.errors }}
+                    </div>
+                {% endif %}
+                {{ fields.label }}
+                {{ fields }}
+            </div>
+        {% endfor %}
+        <button type="submit" name="button">Создать страницу</button>
     </form>
 </div>
 </body>

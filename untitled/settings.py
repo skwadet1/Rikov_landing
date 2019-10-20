@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'untitled.urls'
@@ -74,7 +75,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'untitled.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -134,4 +134,4 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/previews/'
 MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, "untitled/media")
 
-
+ALLOWED_HOSTS = ['127.0.0.1']

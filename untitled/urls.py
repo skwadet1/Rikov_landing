@@ -21,9 +21,13 @@ from django.conf.urls.static import static
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  path('', views.index, name='pages_url'),
+                  path('', views.index, name='index'),
                   path('upload_video/', views.PageCreate.as_view(), name='create_url'),
-                  path('upload_photo/', views.PhotoCreate.as_view(), name='create_url'),
                   path('video/<str:slug>/', views.DetailView.as_view(), name='pages_url'),
                   path('tag/<str:slug>/', views.DetailTag.as_view(), name='tag_url'),
+                  path('photos/', views.photo, name='photos'),
+                  path('upload_photo/', views.create_page, name='upload_photo'),
+                  path('control/', views.control, name='control')
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = views.pagenotfound

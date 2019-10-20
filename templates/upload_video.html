@@ -25,7 +25,7 @@
 
 <body>
 <div class="container mt-3">
-    <h2>Выберите файл превью</h2>
+    <a href="{% url 'control' %}">< Обратно</a>
     <form action="{% url 'create_url' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% for fields in form %}

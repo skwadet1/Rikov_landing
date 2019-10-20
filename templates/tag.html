@@ -108,19 +108,23 @@
             color: gray;
             transition: 0.5s;
         }
+
+        .container {
+            margin-left: 13.8%;
+        }
     </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid"><a class="navbar-brand" href="">Rikov</a>
+    <div class="container-fluid"><a class="navbar-brand" href="{% url 'index' %}">Rikov</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-4"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse"
              id="navcol-4">
             <ul class="nav navbar-nav pull-sm-right">
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#">Фото</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'photos' %}">Фото</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Обо мне</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#">Контакты</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="https://vk.com/rikovprod">Контакты</a></li>
             </ul>
         </div>
     </div>
@@ -132,7 +136,7 @@
                 <div class="card mb-4 box-shadow">
                     <img class="card-img-top"
                          data-src="holder.js/105px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                         alt="Thumbnail [105%x225]" style="height: 225px; width: 105%; display: block;"
+                         alt="Thumbnail [105%x225]" style="height: 200px; width: 370px; display: block;"
                          src="{{ i.preview_image.url }}"
                          data-holder-rendered="true">
                     <div class="card-img-overlay d-flex">
@@ -154,5 +158,6 @@
         {% endfor %}
     </div>
 </div>
+<p style="margin-left: 13.8%">by Eugene Bazarov</p>
 </body>
 </html>

@@ -28,7 +28,7 @@ class Tag(models.Model):
 
 
 class Photo(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=50, null=True, blank=True, default=None)
     image = models.FileField(upload_to='photos/')
 
     def _str_(self):

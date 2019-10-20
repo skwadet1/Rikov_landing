@@ -1,14 +1,25 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from .forms import *
 from .models import CreateNewPage, Tag
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.views.generic import View
 from .utils import *
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
+
+def pagenotfound(request, exception):
+    return HttpResponseNotFound(render(request, "404.html"))
 
 
 def index(request):
     pre = CreateNewPage.objects.all()
     return render(request, 'index.html', {'pre': pre})
+
+
+def photo(request):
+    pre = Photo.objects.all()
+    return render(request, 'photos.html', {'pre': pre})
 
 
 class DetailView(DetailMixin, View):
@@ -21,13 +32,31 @@ class DetailTag(DetailMixin, View):
     template = 'tag.html'
 
 
-class PageCreate(CreateMixin, View):
+class PageCreate(LoginRequiredMixin, CreateMixin, View):
     model_form = FormVideo
     template = 'upload_video.html'
     raise_exception = True
 
 
-class PhotoCreate(CreateMixin, View):
-    model_form = FormPhoto
-    template = "upload_photo.html"
-    raise_exception = True
+# class PhotoCreate(CreateMixin, View):
+#     model_form = FormPhoto
+#     template = "upload_test.html"
+#     raise_exception = True
+
+@login_required(login_url='photos')
+def create_page(request):
+    if request.method == 'POST':
+        form = NewPageForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = Photo(image=request.FILES['image'],
+                             title=request.POST['title'])
+            instance.save()
+        return HttpResponseRedirect('')
+    else:
+        form = NewPageForm()
+    return render(request, 'upload_photo.html', {'form': form})
+
+
+@login_required(login_url='photos')
+def control(request):
+    return render(request, 'control.html')
