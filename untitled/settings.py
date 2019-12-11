@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'untitled.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rikov',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'NAME': 'rikovsite',
+        'USER': 'skwadet',
+        'PASSWORD': 'jacqesdemolay',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -127,11 +127,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [
-    "D:/Interes/untitled/static"
+    os.path.join(BASE_DIR, "/static")
 ]
-MEDIA_URL = '/previews/'
-MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, "untitled/media")
 
-ALLOWED_HOSTS = ['127.0.0.1']
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "/media")

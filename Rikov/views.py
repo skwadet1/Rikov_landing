@@ -1,6 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from .forms import *
-from .models import CreateNewPage, Tag
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.views.generic import View
 from .utils import *
