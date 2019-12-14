@@ -28,6 +28,6 @@ urlpatterns = [
                   path('photos/', views.photo, name='photos'),
                   path('upload_photo/', views.create_page, name='upload_photo'),
                   path('control/', views.control, name='control')
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = views.pagenotfound
